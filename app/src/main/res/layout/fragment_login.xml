@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.fragments.LoginFragment"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/white">
+
+    <EditText
+        android:id="@+id/emailET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:inputType="textEmailAddress"
+        android:hint="@string/email"
+        android:autofillHints="emailAddress"/>
+    <TextView
+        android:id="@+id/invalidEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/invalid_email"
+        android:textColor="@color/red"
+        android:visibility="invisible"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/passwordET"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:inputType="textPassword"
+        android:hint="@string/password"
+        android:maxLength="15"
+        android:autofillHints="password"/>
+    <TextView
+        android:id="@+id/invalidPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/invalid_pass"
+        android:textColor="@color/red"
+        android:visibility="invisible"
+        android:textStyle="bold"/>
+
+    <Button
+        android:id="@+id/submitBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login"
+        android:layout_margin="10dp"
+        android:layout_gravity="center_horizontal"
+        android:enabled="false"/>
+
+</LinearLayout>
