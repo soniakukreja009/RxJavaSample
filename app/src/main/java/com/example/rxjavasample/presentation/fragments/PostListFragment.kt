@@ -58,7 +58,7 @@ class PostListFragment : Fragment() {
         postsViewModel.statePostsList.observeForever { postListState ->
             when (postListState) {
                 is StatePostList.Loading -> {
-                    
+                    // handling loader
                 }
                 is StatePostList.Success -> {
                     val posts = postListState.postList
@@ -67,13 +67,12 @@ class PostListFragment : Fragment() {
                 }
                 is StatePostList.Failure -> {
                     val message = postListState.message
-                    Toast.makeText(mContext, message, Toast.LENGTH_LONG).show()
+                    Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
                 }
             }
         }
 
         binding.tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
-            @SuppressLint("NotifyDataSetChanged")
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 val list = if (tab?.position == 0) {
                     postsViewModel.postsList.value
