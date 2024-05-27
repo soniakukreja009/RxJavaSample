@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.rxjavasample.domain.Post
+import com.example.rxjavasample.presentation.state.StatePostList
 import com.example.rxjavasample.usecase.GetPostsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -16,27 +17,26 @@ class PostListViewModel @Inject constructor(
     private val useCase: GetPostsUseCase
 ): ViewModel() {
 
+    val statePostsList = MutableLiveData<StatePostList>()
     val postsList = MutableLiveData<List<Post>>()
-    val showError = MutableLiveData<Boolean>()
 
     init {
         getPostsList()
     }
 
     @SuppressLint("CheckResult")
-    private fun getPostsList(): LiveData<List<Post>> {
+    private fun getPostsList(): LiveData<StatePostList> {
         useCase.invoke()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
-                { posts -> postsList.postValue(posts) },
-                { error -> showError() }
+                { posts ->
+                    postsList.value = posts
+                    statePostsList.postValue(StatePostList.Success(posts))
+                },
+                { error -> statePostsList.postValue(StatePostList.Failure(error.message?:"")) }
             )
-        return postsList
-    }
-
-    private fun showError() {
-        showError.postValue(true)
+        return statePostsList
     }
 
     fun onItemClicked(itemId: Int) {

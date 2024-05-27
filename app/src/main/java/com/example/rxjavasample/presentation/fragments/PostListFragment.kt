@@ -13,6 +13,7 @@ import com.example.rxjavasample.R
 import com.example.rxjavasample.databinding.FragmentPostListBinding
 import com.example.rxjavasample.presentation.adapter.OnItemClickListener
 import com.example.rxjavasample.presentation.adapter.PostListAdapter
+import com.example.rxjavasample.presentation.state.StatePostList
 import com.example.rxjavasample.presentation.viewmodel.PostListViewModel
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
@@ -51,14 +52,24 @@ class PostListFragment : Fragment() {
                 postListAdapter.notifyDataSetChanged()
             }
         })
-//        val animation = AnimationUtils.loadLayoutAnimation(mContext, )
-//        binding.postsRV.layoutAnimation = animation
         binding.postsRV.adapter = postListAdapter
         binding.postsRV.layoutManager = LinearLayoutManager(mContext)
 
-        postsViewModel.postsList.observeForever { posts ->
-            postListAdapter.updateList(posts)
-            postListAdapter.notifyDataSetChanged()
+        postsViewModel.statePostsList.observeForever { postListState ->
+            when (postListState) {
+                is StatePostList.Loading -> {
+                    
+                }
+                is StatePostList.Success -> {
+                    val posts = postListState.postList
+                    postListAdapter.updateList(posts)
+                    postListAdapter.notifyDataSetChanged()
+                }
+                is StatePostList.Failure -> {
+                    val message = postListState.message
+                    Toast.makeText(mContext, message, Toast.LENGTH_LONG).show()
+                }
+            }
         }
 
         binding.tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
@@ -83,16 +94,10 @@ class PostListFragment : Fragment() {
 
             }
         })
-
-        postsViewModel.showError.observeForever {isError ->
-            if (isError) {
-                Toast.makeText(mContext, "Error", Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
-        postsViewModel.postsList.removeObservers(viewLifecycleOwner)
+        postsViewModel.statePostsList.removeObservers(viewLifecycleOwner)
     }
 }

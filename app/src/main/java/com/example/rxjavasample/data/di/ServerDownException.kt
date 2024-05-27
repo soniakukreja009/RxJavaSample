@@ -1,4 +1,4 @@
-package com.example.rxjavasample.data
+package com.example.rxjavasample.data.di
 
 import android.content.Context
 import java.io.IOException

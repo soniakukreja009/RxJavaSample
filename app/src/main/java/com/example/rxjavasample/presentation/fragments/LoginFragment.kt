@@ -33,12 +33,12 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding = FragmentLoginBinding.bind(view)
 
-        binding.emailET.doOnTextChanged { text, start, before, count ->
+        binding.emailET.doOnTextChanged { _, _, _, _ ->
             viewModel.isEmailValid = Patterns.EMAIL_ADDRESS.matcher(binding.emailET.text).matches()
             binding.invalidEmail.visibility = if (!viewModel.isEmailValid) View.VISIBLE else View.INVISIBLE
             binding.submitBtn.isEnabled = viewModel.enableSubmitButton()
         }
-        binding.passwordET.doOnTextChanged { text, start, before, count ->
+        binding.passwordET.doOnTextChanged { _, _, _, _ ->
             viewModel.isPasswordValid = binding.passwordET.text.length in 8..15
             binding.invalidPass.visibility = if (!viewModel.isPasswordValid)  View.VISIBLE else View.INVISIBLE
             binding.submitBtn.isEnabled = viewModel.enableSubmitButton()
