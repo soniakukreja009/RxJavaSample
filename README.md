@@ -7,7 +7,8 @@ It has 2 screen Login and Post List.
 3. LiveData -> It's an Observable data holder. Works on Observer Pattern and updates the view whenever there is change in data. Also, Activity lifecycle aware.
 4. Navigation -> We used Jetpack Navigation component. Provides a consistent way to manage the Activity/Fragment. Uses visual graph to make the entire process easier, clearer and more consistent.
 5. ViewModel -> It's a class that holds the state of UI. Encapsulate the business Logic and is Lifecycle aware.
-6. Hilt -> For Dependency Injection. 
+6. Hilt -> For Dependency Injection.
+7. RxJava -> For handling Asynchronous event and data stream in more concise w& declarative way. 
 
 **How can I improve the project?**
 By adding 
