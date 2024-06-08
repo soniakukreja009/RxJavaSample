@@ -1,8 +1,8 @@
-package com.example.rxjavasample.data
+package com.example.rxjavasample.data.datasource
 
-import com.example.rxjavasample.domain.ApiService
-import com.example.rxjavasample.domain.Comments
-import com.example.rxjavasample.domain.Post
+import com.example.rxjavasample.data.ApiService
+import com.example.rxjavasample.data.entity.Comments
+import com.example.rxjavasample.data.entity.Post
 import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject
 

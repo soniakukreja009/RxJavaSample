@@ -1,6 +1,6 @@
 package com.example.rxjavasample.presentation.state
 
-import com.example.rxjavasample.domain.Post
+import com.example.rxjavasample.data.entity.Post
 
 sealed class StatePostList {
 

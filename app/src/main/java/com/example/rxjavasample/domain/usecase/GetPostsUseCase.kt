@@ -1,7 +1,7 @@
-package com.example.rxjavasample.usecase
+package com.example.rxjavasample.domain.usecase
 
-import com.example.rxjavasample.data.Repository
-import com.example.rxjavasample.domain.Post
+import com.example.rxjavasample.domain.Repository
+import com.example.rxjavasample.data.entity.Post
 import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject
 

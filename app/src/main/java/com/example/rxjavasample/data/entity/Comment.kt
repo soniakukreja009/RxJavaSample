@@ -1,4 +1,4 @@
-package com.example.rxjavasample.domain
+package com.example.rxjavasample.data.entity
 
 data class Comment(
     val postId: Int,

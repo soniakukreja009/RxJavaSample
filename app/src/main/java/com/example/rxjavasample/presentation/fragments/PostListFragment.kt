@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rxjavasample.R
 import com.example.rxjavasample.databinding.FragmentPostListBinding
+import com.example.rxjavasample.data.entity.Post
 import com.example.rxjavasample.presentation.adapter.OnItemClickListener
 import com.example.rxjavasample.presentation.adapter.PostListAdapter
 import com.example.rxjavasample.presentation.state.StatePostList
@@ -28,6 +29,8 @@ class PostListFragment : Fragment() {
     private lateinit var postListAdapter: PostListAdapter
 
     private lateinit var binding: FragmentPostListBinding
+
+    private var posts: List<Post> = listOf()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,7 +51,7 @@ class PostListFragment : Fragment() {
         postListAdapter = PostListAdapter(listOf(), mContext)
         postListAdapter.setOnItemClickListener(object : OnItemClickListener{
             override fun onItemClick(position: Int) {
-                postsViewModel.onItemClicked(position)
+                posts.single { it.id == position }.apply { isFav = !isFav }
                 postListAdapter.notifyDataSetChanged()
             }
         })
@@ -61,7 +64,7 @@ class PostListFragment : Fragment() {
                     // handling loader
                 }
                 is StatePostList.Success -> {
-                    val posts = postListState.postList
+                    posts = postListState.postList
                     postListAdapter.updateList(posts)
                     postListAdapter.notifyDataSetChanged()
                 }
@@ -75,11 +78,11 @@ class PostListFragment : Fragment() {
         binding.tabLayout.addOnTabSelectedListener(object : OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab?) {
                 val list = if (tab?.position == 0) {
-                    postsViewModel.postsList.value
+                    posts
                 } else {
-                    postsViewModel.postsList.value?.filter { it.isFav }
+                    posts.filter { it.isFav }
                 }
-                list?.let {
+                list.let {
                     postListAdapter.updateList(list)
                     postListAdapter.notifyDataSetChanged()
                 }

@@ -1,8 +1,8 @@
-package com.example.rxjavasample.data.di
+package com.example.rxjavasample.di
 
-import com.example.rxjavasample.data.RemoteSource
-import com.example.rxjavasample.data.RemoteSourceImpl
-import com.example.rxjavasample.data.Repository
+import com.example.rxjavasample.data.datasource.RemoteSource
+import com.example.rxjavasample.data.datasource.RemoteSourceImpl
+import com.example.rxjavasample.domain.Repository
 import com.example.rxjavasample.data.RepositoryImpl
 import dagger.Binds
 import dagger.Module

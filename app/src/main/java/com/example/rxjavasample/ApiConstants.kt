@@ -1,4 +1,4 @@
-package com.example.rxjavasample.domain
+package com.example.rxjavasample
 
 object ApiConstants {
 

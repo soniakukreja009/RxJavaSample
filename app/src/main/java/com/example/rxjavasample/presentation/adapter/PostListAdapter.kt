@@ -8,7 +8,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
 import com.example.rxjavasample.R
 import com.example.rxjavasample.databinding.ListCardBinding
-import com.example.rxjavasample.domain.Post
+import com.example.rxjavasample.data.entity.Post
 
 class PostListAdapter(private var postList: List<Post>, val context: Context) : RecyclerView.Adapter<PostListAdapter.ListHolder>() {
 

@@ -1,4 +1,4 @@
-package com.example.rxjavasample.data.di
+package com.example.rxjavasample.di
 
 import kotlinx.coroutines.flow.Flow
 
