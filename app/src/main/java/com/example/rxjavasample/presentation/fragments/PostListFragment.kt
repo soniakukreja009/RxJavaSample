@@ -100,6 +100,7 @@ class PostListFragment : Fragment() {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        postsViewModel.statePostsList.removeObservers(viewLifecycleOwner)
+        // ObserveForever doesn't get removed automatically so need to remove manually
+        postsViewModel.statePostsList.removeObservers(this)
     }
 }
