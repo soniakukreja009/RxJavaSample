@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">دعامات</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="password">كلمة المرور</string>
+    <string name="login">تسجيل الدخول</string>
+    <string name="email">بريد إلكتروني</string>
+    <string name="invalid_email">بريد إلكتروني خاطئ!</string>
+    <string name="invalid_pass">رمز مرور خاطئ!</string>
+    <string name="submit">يُقدِّم</string>
+    <string name="hola">أولا!</string>
+    <string name="english">English</string>
+    <string name="arabic">عربي</string>
+    <string name="posts">دعامات</string>
+    <string name="favourites">المفضلة</string>
+</resources>

@@ -45,14 +45,16 @@ class PostListFragment : Fragment() {
         binding = FragmentPostListBinding.bind(view)
 
         val mContext = requireContext()
-        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Posts"))
-        binding.tabLayout.addTab(binding.tabLayout.newTab().setText("Favourites"))
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText(resources.getString(R.string.posts)))
+        binding.tabLayout.addTab(binding.tabLayout.newTab().setText(resources.getString(R.string.favourites)))
 
         postListAdapter = PostListAdapter(listOf(), mContext)
         postListAdapter.setOnItemClickListener(object : OnItemClickListener{
             override fun onItemClick(position: Int) {
-                posts.single { it.id == position }.apply { isFav = !isFav }
-                postListAdapter.notifyDataSetChanged()
+                if (binding.tabLayout.selectedTabPosition == 0) {
+                    posts.single { it.id == position }.apply { isFav = !isFav }
+                    postListAdapter.notifyDataSetChanged()
+                }
             }
         })
         binding.postsRV.adapter = postListAdapter

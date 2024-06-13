@@ -2,7 +2,12 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="light_grey">#EAEAEA</color>
-    <color name="peach">#F1C8C8</color>
+    <color name="light_grey">#F1F1F1</color>
+    <color name="peach">#F8C7D8</color>
+    <color name="pink">#FC669B</color>
+    <color name="light_blue">#A9D7FC</color>
+    <color name="blue">#2196F3</color>
+    <color name="dark_blue">#3F51B5</color>
+    <color name="orange">#FF8A02</color>
     <color name="red">#F44336</color>
 </resources>

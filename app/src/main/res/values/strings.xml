@@ -6,4 +6,10 @@
     <string name="email">Email</string>
     <string name="invalid_email">Invalid Email!</string>
     <string name="invalid_pass">Invalid Password!</string>
+    <string name="submit">Submit</string>
+    <string name="hola">Hola!</string>
+    <string name="english">English</string>
+    <string name="arabic">عربي</string>
+    <string name="posts">Posts</string>
+    <string name="favourites">Favourites</string>
 </resources>

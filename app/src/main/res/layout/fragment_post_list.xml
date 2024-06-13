@@ -16,7 +16,7 @@
         app:tabTextColor="@color/black"
         android:elevation="10dp"
         app:tabInlineLabel="true"
-        app:tabTextAppearance="@style/TextAppearance.AppCompat.Small"/>
+        app:tabTextAppearance="@style/TextAppearance.AppCompat.Subhead"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/postsRV"

@@ -40,9 +40,9 @@ class PostListAdapter(private var postList: List<Post>, val context: Context) : 
         view.postTitle.text = post.title
         view.postBody.text = post.body
         if (post.isFav) {
-            view.cardView.background = AppCompatResources.getDrawable(context, R.drawable.peach_bg)
+            view.cardView.background = AppCompatResources.getDrawable(context, R.drawable.selected_card_gradient)
         } else {
-            view.cardView.background = AppCompatResources.getDrawable(context, R.drawable.light_grey_bg)
+            view.cardView.background = AppCompatResources.getDrawable(context, R.drawable.card_gradient)
         }
         view.cardView.setOnClickListener {
             onItemClickListener.onItemClick(post.id)
