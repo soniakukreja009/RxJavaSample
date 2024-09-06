@@ -1,11 +1,13 @@
 package com.example.rxjavasample.di
 
 import android.content.Context
+import androidx.room.Room
 import com.example.rxjavasample.data.datasource.RemoteSource
 import com.example.rxjavasample.data.datasource.RemoteSourceImpl
 import com.example.rxjavasample.data.RepositoryImpl
 import com.example.rxjavasample.ApiConstants
 import com.example.rxjavasample.data.ApiService
+import com.example.rxjavasample.data.datasource.AppDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -81,5 +83,14 @@ object DataModule {
     @Provides
     fun provideRepository(remoteSource: RemoteSource): RepositoryImpl {
         return RepositoryImpl(remoteSource)
+    }
+    @Singleton
+    @Provides
+    fun provideDatabase(@ApplicationContext context: Context): AppDatabase {
+        return Room.databaseBuilder(
+            context,
+            AppDatabase::class.java,
+            "postDatabase"
+        ).build()
     }
 }

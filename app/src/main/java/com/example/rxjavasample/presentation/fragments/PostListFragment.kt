@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.rxjavasample.ApiConstants
 import com.example.rxjavasample.R
 import com.example.rxjavasample.databinding.FragmentPostListBinding
 import com.example.rxjavasample.data.entity.Post
@@ -52,7 +53,10 @@ class PostListFragment : Fragment() {
         postListAdapter.setOnItemClickListener(object : OnItemClickListener{
             override fun onItemClick(position: Int) {
                 if (binding.tabLayout.selectedTabPosition == 0) {
-                    posts.single { it.id == position }.apply { isFav = !isFav }
+                    posts.single { it.id == position }.apply {
+                        isFav = !isFav
+                        postsViewModel.updateDBPostData(this)
+                    }
                     postListAdapter.notifyDataSetChanged()
                 }
             }
@@ -71,8 +75,7 @@ class PostListFragment : Fragment() {
                     postListAdapter.notifyDataSetChanged()
                 }
                 is StatePostList.Failure -> {
-                    val message = postListState.message
-                    Toast.makeText(mContext, message, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(mContext, ApiConstants.CHECK_INTERNET_CONNECTION, Toast.LENGTH_SHORT).show()
                 }
             }
         }

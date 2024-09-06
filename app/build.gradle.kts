@@ -57,6 +57,7 @@ dependencies {
 
     //Data Store
     implementation("androidx.datastore:datastore-preferences:1.1.1")
+    implementation("androidx.datastore:datastore-preferences-rxjava3:1.1.1")
 
     // Gson
     implementation("com.google.code.gson:gson:2.10.1")
@@ -92,6 +93,10 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
 
+    //Room
+    implementation("androidx.room:room-runtime:2.4.0")
+    kapt("androidx.room:room-compiler:2.4.0")
+    implementation("androidx.room:room-ktx:2.4.0")
 }
 
 kapt {
